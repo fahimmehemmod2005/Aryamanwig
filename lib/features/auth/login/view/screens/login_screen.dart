@@ -1,6 +1,10 @@
 import 'package:aryamanwig/app/themes/app_text_styles.dart';
+import 'package:aryamanwig/app/widgets/buttons/primary_button.dart';
+import 'package:aryamanwig/app/widgets/buttons/social_button.dart';
 import 'package:aryamanwig/app/widgets/inputfield/input_field.dart';
+import 'package:aryamanwig/app/widgets/richtext/custom_richtext.dart';
 import 'package:aryamanwig/core/constant/image_path.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,6 +20,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  @override
+  void dispose() {
+    _emailController;
+    _passwordController;
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +39,10 @@ class _LoginScreenState extends State<LoginScreen> {
             key: _formKey,
             autovalidateMode: AutovalidateMode.onUserInteraction,
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
+                SizedBox(height: 32.h),
+
                 // ---------------- app logo -----------------
                 SvgPicture.asset(ImagePath.appLogo),
 
@@ -56,7 +68,6 @@ class _LoginScreenState extends State<LoginScreen> {
                 // ------------- password input field -----------------
                 TextInputField(
                   controller: _passwordController,
-                  validator: passwordValidator,
                   topLebel: 'Password',
                   hintText: 'Enter your password',
                   obscureText: true,
@@ -66,11 +77,58 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
 
-                ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                  },
-                  child: Text("submit"),
+                SizedBox(height: 4.h),
+
+                // ----------- forgot button -------------
+                Align(
+                  alignment: AlignmentGeometry.centerRight,
+                  child: GestureDetector(
+                    onTap: () {},
+                    child: Text(
+                      'Forgot password?',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
+                  ),
+                ),
+
+                SizedBox(height: 43.h),
+
+                // ------------------- primary button ----------------
+                PrimaryButton(onTap: () {}, text: 'Sign In'),
+
+                SizedBox(height: 24.h),
+
+                Text('Or'),
+
+                SizedBox(height: 24.h),
+
+                // ---------------- Social buttons ---------------
+                SocialButton(
+                  text: 'Google',
+                  imagePath: ImagePath.google,
+                  onTap: () {},
+                ),
+                SizedBox(height: 16.h),
+                SocialButton(
+                  text: 'Apple',
+                  imagePath: ImagePath.apple,
+                  onTap: () {},
+                ),
+                SizedBox(height: 16.h),
+                SocialButton(
+                  text: 'Microsoft',
+                  imagePath: ImagePath.microsoft,
+                  onTap: () {},
+                ),
+                SizedBox(height: 16.h),
+
+                CustomRichText(
+                  firstText: 'Have an account? ',
+                  secondText: 'Sign Up',
                 ),
               ],
             ),

@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
       builder: (context, child) {
         return MaterialApp(
           title: '',
+          theme: ThemeData(
+            scaffoldBackgroundColor: Color(0xFFFFFFFF)
+          ),
           debugShowCheckedModeBanner: false,
           initialRoute: AppRoutes.initialRoute,
           routes: AppRoutes.routes,
