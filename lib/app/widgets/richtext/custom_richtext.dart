@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 class CustomRichText extends StatelessWidget {
   final String firstText;
   final String secondText;
+  final VoidCallback onTap;
   const CustomRichText({
     super.key,
     required this.firstText,
-    required this.secondText,
+    required this.secondText, required this.onTap,
   });
 
   @override
@@ -16,7 +17,7 @@ class CustomRichText extends StatelessWidget {
       text: TextSpan(
         text: firstText,
         style: TextStyle(
-          fontSize: 16,
+          fontSize: 14,
           fontWeight: FontWeight.w400,
           color: Color(0xff777980),
         ),
@@ -24,7 +25,7 @@ class CustomRichText extends StatelessWidget {
           TextSpan(
             text: secondText,
             style: TextStyle(color: Color(0xffDE3526)),
-            recognizer: TapGestureRecognizer()..onTap = () {},
+            recognizer: TapGestureRecognizer()..onTap = onTap,
           ),
         ],
       ),

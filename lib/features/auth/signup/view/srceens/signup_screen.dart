@@ -5,19 +5,18 @@ import 'package:aryamanwig/app/widgets/inputfield/input_field.dart';
 import 'package:aryamanwig/app/widgets/richtext/custom_richtext.dart';
 import 'package:aryamanwig/core/constant/image_path.dart';
 import 'package:aryamanwig/core/constant/route_name.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignupScreen extends StatefulWidget {
+  const SignupScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignupScreen> createState() => _SignupScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignupScreenState extends State<SignupScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -57,11 +56,44 @@ class _LoginScreenState extends State<LoginScreen> {
 
                 SizedBox(height: 24.h),
 
+                // ------------- first name input field -----------------
+                TextInputField(
+                  topLebel: 'First Name',
+                  hintText: 'Enter your first name',
+                ),
+
+                SizedBox(height: 16.h),
+
+                // ------------- last name input field -----------------
+                TextInputField(
+                  topLebel: 'Last Name',
+                  hintText: 'Enter your last name',
+                ),
+
+                SizedBox(height: 16.h),
+
                 // ------------- email input field -----------------
                 TextInputField(
                   controller: _emailController,
                   topLebel: 'Email',
                   hintText: 'Enter your email',
+                ),
+
+                SizedBox(height: 16.h),
+
+                // ------------- number input field -----------------
+                TextInputField(
+                  textInputType: TextInputType.number,
+                  topLebel: 'Contact Number',
+                  hintText: 'Enter contact number',
+                ),
+
+                SizedBox(height: 16.h),
+
+                // ------------- location input field -----------------
+                TextInputField(
+                  topLebel: 'Location',
+                  hintText: 'Enter your Location',
                 ),
 
                 SizedBox(height: 16.h),
@@ -78,30 +110,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
 
-                SizedBox(height: 4.h),
-
-                // ----------- forgot button -------------
-                Align(
-                  alignment: AlignmentGeometry.centerRight,
-                  child: GestureDetector(
-                    onTap: () {
-                      Navigator.pushNamed(context, RouteName.forgotpassword);
-                    },
-                    child: Text(
-                      'Forgot password?',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                        decoration: TextDecoration.underline,
-                      ),
-                    ),
-                  ),
-                ),
-
-                SizedBox(height: 43.h),
+                SizedBox(height: 20.h),
 
                 // ------------------- primary button ----------------
-                PrimaryButton(onTap: () {}, text: 'Sign In'),
+                PrimaryButton(onTap: () {
+                   Navigator.pushNamed(context, RouteName.login);
+                }, text: 'Sign In'),
 
                 SizedBox(height: 24.h),
 
@@ -125,15 +139,17 @@ class _LoginScreenState extends State<LoginScreen> {
                 SocialButton(
                   text: 'Microsoft',
                   imagePath: ImagePath.microsoft,
-                  onTap: () {},
+                  onTap: () {
+                   
+                  },
                 ),
                 SizedBox(height: 16.h),
 
                 // --------------- rich text -----------------
                 CustomRichText(
-                  firstText: "Don't an account? ",
-                  secondText: 'Sign Up',
-                  onTap: () => Navigator.pushNamed(context, RouteName.signup),
+                  firstText: 'Have an account? ',
+                  secondText: 'Sign In',
+                  onTap: () => Navigator.pushNamed(context, RouteName.login),
                 ),
               ],
             ),

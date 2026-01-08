@@ -9,6 +9,7 @@ class TextInputField extends StatelessWidget {
   final bool? obscureText;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
+  final TextInputType? textInputType;
 
   const TextInputField({
     super.key,
@@ -17,7 +18,7 @@ class TextInputField extends StatelessWidget {
     this.suffixIcon,
     this.obscureText,
     this.controller,
-    this.validator,
+    this.validator, this.textInputType,
   });
 
   @override
@@ -28,6 +29,7 @@ class TextInputField extends StatelessWidget {
         Text(topLebel, style: AppTextStyles.title16_400w()),
         SizedBox(height: 8.h),
         TextFormField(
+          keyboardType: textInputType,
           decoration: InputDecoration(
             // underline
             border: InputBorder.none,

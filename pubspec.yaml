@@ -38,6 +38,7 @@ dependencies:
   flutter_screenutil: ^5.9.3
   google_fonts: ^7.0.0
   flutter_svg: ^2.2.3
+  pin_input_text_field: ^4.5.2
 
 dev_dependencies:
   flutter_test:
